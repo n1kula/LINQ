@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Functions
 {
@@ -24,7 +22,23 @@ namespace Functions
                 new Employee { Id = 1, FirstName = "Maja", LastName = "Kwas"}
             };
 
+            //named method
             foreach (var person in cashiers.Where(StartsWithM))
+            {
+                Console.WriteLine(person.FirstName);
+            }
+
+            //annonymous method
+            foreach (var person in cashiers.Where(delegate(Employee employee) {
+                    return employee.FirstName.StartsWith("M");
+                    }
+                ))
+            {
+                Console.WriteLine(person.FirstName);
+            }
+
+            //lambda
+            foreach (var person in cashiers.Where(p => p.FirstName.StartsWith("M")))
             {
                 Console.WriteLine(person.FirstName);
             }
