@@ -64,6 +64,12 @@ namespace Functions
             {
                 Console.WriteLine(person.FirstName);
             }
+
+            var query = managers.Where(p => p.FirstName.Length == 5).OrderBy(p => p.FirstName);
+            foreach (var person in query)
+            {
+                Console.WriteLine(person.FirstName);
+            }
         }
 
         private static bool StartsWithM(Employee employee)
