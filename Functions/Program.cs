@@ -70,6 +70,17 @@ namespace Functions
             {
                 Console.WriteLine(person.FirstName);
             }
+
+            //skladnia zapytania
+            string[] cities = { "Warszawa", "Opole", "Wroclaw", "Szczecin", "Krakow" };
+            IEnumerable<string> citiesWithW = from city in cities
+                                              where city.StartsWith("K") && city.Length < 7
+                                              orderby city
+                                              select city;
+            foreach (var city in citiesWithW)
+            {
+                Console.WriteLine(city);
+            }
         }
 
         private static bool StartsWithM(Employee employee)
