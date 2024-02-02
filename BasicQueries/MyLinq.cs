@@ -16,5 +16,13 @@ namespace BasicQueries
 
             return result;
         }
+
+        public static IEnumerable<T> MyFilterLikeWhere<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            foreach (var item in source)
+            {
+                yield return item;
+            }
+        }
     }
 }

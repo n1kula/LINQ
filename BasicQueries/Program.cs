@@ -21,6 +21,13 @@ namespace BasicQueries
             {
                 Console.WriteLine(film.Title);
             }
+
+            var query2 = movies.MyFilterLikeWhere(f => f.Year > 2005);
+
+            foreach (var film in query)
+            {
+                Console.WriteLine(film.Title);
+            }
         }
     }
 }
