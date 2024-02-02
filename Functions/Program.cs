@@ -58,6 +58,12 @@ namespace Functions
 
             //return void
             Action<int> write = x => Console.WriteLine(x);
+
+            // orderBy
+            foreach (var person in managers.Where(p => p.FirstName.Length == 5).OrderBy(p => p.FirstName))
+            {
+                Console.WriteLine(person.FirstName);
+            }
         }
 
         private static bool StartsWithM(Employee employee)
