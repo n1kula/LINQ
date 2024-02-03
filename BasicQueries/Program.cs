@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace BasicQueries
 {
@@ -8,6 +8,13 @@ namespace BasicQueries
     {
         static void Main(string[] args)
         {
+            var doubles = MyLinq.RandomDoubles().Where(l => l > 0.5).Take(10);
+            
+            foreach (var x in doubles)
+                {
+                Console.WriteLine(x);
+            }
+
             var movies = new List<Film>
             {
                 new Film {Title = "Bad Boys", Type = "Comedy", Rating = 8.2, Year = 2005},
@@ -28,6 +35,19 @@ namespace BasicQueries
             {
                 Console.WriteLine(film.Title);
             }
+
+            var query3 = from movie in movies
+                         where movie.Year > 2000
+                         orderby movie.Rating descending
+                         select movie;
+
+            var enumerator = query3.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current.Title);
+            }
         }
     }
 }
+
